@@ -1,0 +1,375 @@
+<html>
+	<head>		
+		<title>Peta Kemiskinan Indonesia</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+		
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" 
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+		
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" 
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+		<script src="data/indonesia-prov.geojson"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type = "text/javascript">
+			google.charts.load('current', {packages: ['corechart','line']});  
+			 </script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Jakarta', 'Persentae'],
+          ['Penduduk Miskin',    3.47],
+          ['Tidak Miskin',      96.53]
+        ]);
+
+        var options = {
+          pieHole: 0.4,
+          title : 'DKI  Jakarta',
+		  titleTextStyle: {
+					color: 'white',
+					fontName: 'Arial',
+					fontSize: 15
+					},
+          slices: {0: {color: 'orange'}, 1:{color: 'black'}},
+		  backgroundColor: 'transparent',
+		  legend: {
+					textStyle: {color: 'white', fontSize: 11}
+					
+				}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+
+		
+      }
+	</script>
+	<script type="text/javascript">
+		google.charts.load("current", {packages:["corechart"]});
+		google.charts.setOnLoadCallback(drawChart);
+		function drawChart() {
+	
+		  var data2 = google.visualization.arrayToDataTable([
+			['Papua', 'Persentae'],
+			['Penduduk Miskin',    27.53],
+			['Tidak Miskin',      72.47]
+		  ]);
+  
+		  var options = {
+			pieHole: 0.4,
+			title : 'Papua',
+			titleTextStyle: {
+					color: 'white',
+					fontName: 'Arial',
+					fontSize: 15
+					},
+			slices: {0: {color: 'orange'}, 1:{color: 'black'}},
+			backgroundColor: 'transparent',
+			legend: {
+					textStyle: {color: 'white', fontSize: 11}
+					
+				}
+		  };
+  
+		  var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
+		  chart.draw(data2, options);
+  
+		  
+		}
+	  </script>
+		
+		<style>
+			html,
+			body {
+				background-color:pink;
+				background-image: url(foto/ilustrasi-kemiskinan.jpg);
+				background-size: cover;
+				background-position: center;
+				height: auto;
+				width : auto;
+			}
+
+			#map {
+				width: 100%;
+				height: 100%;
+				
+				
+				
+			}
+		</style>
+		<style>
+			.info {
+				padding: 6px 8px;
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				background: white;
+				background: rgba(255, 255, 255, 0.8);
+				box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+				border-radius: 5px;
+			}
+			.info h4 {
+				margin: 0 0 5px;
+				color: #777;
+			}
+			.legend {
+				text-align: left;
+				line-height: 18px;
+				color: #555;
+			}
+			.legend i {
+				width: 18px;
+				height: 18px;
+				float: left;
+				margin-right: 8px;
+				opacity: 0.7;
+			}
+			.logo img{
+				float: left;
+				height: 7%;
+			}
+
+		</style>
+		<style>
+			#template {
+				height: auto;
+				width:auto;
+				background-color: white;
+				margin:0;
+			}
+			#kotak {
+				width: auto;
+				height:auto;
+				
+			}
+			#kolom1 {
+				width: 24.65%;
+				height:100%;
+				float:left;
+			}
+			#kolom2{
+				width: 74.95%;
+				height:100%;
+				margin-left:3px;
+				float:left;
+			}
+			#atas {
+				height: 62%;
+				float:top;
+				margin-bottom:3px;
+			}
+			#tulisan {
+				height: 33%;
+				font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+				font-size: 2vw;
+			}
+			
+			#bawah {
+				height: 37.2%;
+				float:top;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="template">
+			<div id="kotak"> 
+				<div id="kolom1">
+					<div class="logo">
+						<a href="index.html"><img src="foto/home.png" alt="Home" title="Home"></a>
+						<a href="tematik2.html"><img src="foto/school2.png" alt="Angka Partisipasi Sekolah" title="Angka Partisipasi Sekolah"></a>
+						<a href="tematik4.html"><img src="foto/unemployed.png" alt="Angka Tidak Bekerja" title="Angka Tidak Bekerja"></a>
+					</div>
+				<div id="tulisan">
+					<br/>
+					<center><h4>Angka Kemiskinan Nasional </h4>
+					<h3>9.38%</h3> </center> 
+				</div>
+				<div id="donutchart" ></div>
+				<div id="donutchart2" ></div>
+				</div>
+				<div id="kolom2">
+					<div id="atas">
+						<div id='map'></div> 
+						<script type="text/javascript">
+							var map = L.map('map').setView([-2, 118], 4.5);
+							
+							L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+								maxZoom: 18,
+								attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+									'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+									'Imagery © <a href="https://www.stis.ac.id/">Politeknik Statistika STIS</a>',
+								id: 'mapbox/light-v9',
+								tileSize: 512,
+								zoomOffset: -1
+							}).addTo(map);
+				
+							// control that shows state info on hover
+							var info = L.control();
+
+							info.onAdd = function (map) {
+								this._div = L.DomUtil.create('div', 'info');
+								this.update();
+								return this._div;
+							};
+							
+							info.update = function (properties) {
+								this._div.innerHTML = '<h4> Kemiskinan di Indonesia dalam angka</h4>' +  (properties ?
+									'<b>' + properties.Propinsi + '</b><br />' + properties.Pen_Miskin + ' ribu jiwa <br />' +
+									'Persentase Penduduk Miskin : ' + properties.Pers_Miskin + ' Persen <br/>'
+									: 'Sorot pada Provinsi');
+							};
+
+							info.addTo(map);
+						
+							// get color depending on population density value
+							//jumlah kemiskinan
+							function getColor(d) {
+								return d > 26  ? '#BD0026' :
+									d > 21  ? '#E31A1C' :
+									d > 15  ? '#FC4E2A' :
+									d > 11  ? '#FD8D3C' :
+									d > 6   ? '#FEB24C' :
+									d > 1   ? '#FED976' :
+												'#FFEDA0';
+							}
+
+							function style(feature) {
+								return {
+									weight: 2,
+									opacity: 1,
+									color: 'white',
+									dashArray: '3',
+									fillOpacity: 0.7,
+									fillColor: getColor(feature.properties.Pers_Miskin)
+								};
+							}
+
+							function highlightFeature(e) {
+								var layer = e.target;
+
+								layer.setStyle({
+									weight: 5,
+									color: '#666',
+									dashArray: '',
+									fillOpacity: 0.7
+								});
+
+							if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+								layer.bringToFront();
+							}
+
+								info.update(layer.feature.properties);
+							}
+			
+							var geojson;
+
+							function resetHighlight(e) {
+								geojson.resetStyle(e.target);
+								info.update();
+							}
+
+							function zoomToFeature(e) {
+								map.fitBounds(e.target.getBounds());
+							}
+
+							function onEachFeature(feature, layer) {
+								layer.on({
+									mouseover: highlightFeature,
+									mouseout: resetHighlight,
+									click: zoomToFeature
+								});
+							}
+
+
+							geojson = L.geoJson(data, {
+								style: style,
+								onEachFeature: onEachFeature
+							}).addTo(map);	
+
+							var legend = L.control({position: 'bottomright'});
+
+							legend.onAdd = function (map) {
+
+							//jumlah kemiskinan
+							var div = L.DomUtil.create('div', 'info legend'),
+								grades = [, 1, 6, 11, 16, 21, 26],
+								labels = [],
+								from, to;
+
+							for (var i = 0; i < grades.length; i++) {
+								from = grades[i];
+								to = grades[i + 1];
+
+								labels.push(
+									'<i style="background:' + getColor(from + 1) + '"></i> ' +
+									from + (to ? '&ndash;' + to : '+'));
+							}
+
+							div.innerHTML = labels.join('<br>');
+							return div;
+						};
+
+						legend.addTo(map);
+						</script>
+					</div>
+					<div id="bawah">
+						<script language = "JavaScript">
+							function drawChart() {
+							   // Define the chart to be drawn.
+							   var data = new google.visualization.DataTable();
+							   data.addColumn('string', 'Tahun');
+							   data.addColumn('number', 'Kota');
+							   data.addColumn('number', 'Desa');
+							   data.addRows([
+								//  ['1998',  96959,72780],
+								//  ['1999',  92409,74272],
+								//  ['2000',  91632,73648],
+								//  ['2001',  100011,80382],
+								//  ['2002',  130499,96512],
+								  ['2003',  138803,105888],
+							   	  ['2004',  143455,108725],
+								  ['2005',  165565,117365],
+								  ['2006',  174290,130584],
+								  ['2007',  187942,146837],
+								  ['2008',  204895.99,161830.79],
+								  ['2009',  222123.1,179834.57],
+								  ['2010',  232989,192353.83],
+								  ['2011', 263593.84,223180.69],
+								  ['2012', 277381.99,240441.35],
+								  ['2013', 308826,275779],
+								  ['2014', 326853,296681],
+								  ['2015', 356378, 333034],
+								  ['2016', 372114, 350420],
+								  ['2017', 400995, 370910]
+				   
+							   ]);
+								  
+							   // Set chart options
+							   var options = {'title' : 'Garis Kemiskinan Indonesia',
+								  hAxis: {
+									 title: 'Tahun'
+								  },
+								  vAxis: {
+									 title: 'Rp/Kapita/Bulan'
+								  },   
+								  backgroundColor: 'FFEFE3',
+
+							   };
+				   
+							   // Instantiate and draw the chart.
+							   var chart = new google.visualization.LineChart(document.getElementById('bawah'));
+							   chart.draw(data, options);
+							}
+							google.charts.setOnLoadCallback(drawChart);
+						 </script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
